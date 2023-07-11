@@ -1,1 +1,1 @@
-# MyWebDBSoln
+I often visit many different websites so It's useful if I could keep track of all the links instead of memorizing them all. This is a webapp that stores links in a database and allows me to search for them based on key words in the description and/or by the link type.
