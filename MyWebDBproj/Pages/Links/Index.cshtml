@@ -1,0 +1,69 @@
+﻿@page
+@model MyWebDBproj.Pages.Links.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Links</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form>
+    <p>
+        search by key words in description: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+        <select asp-for="selectedType" asp-items="Model.types">
+            <option value="">All</option>
+        </select>
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Link[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link[0].creationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link[0].description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link[0].type)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Link) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.creationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                <a href="@Html.DisplayFor(modelItem => item.link)">Link</a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
